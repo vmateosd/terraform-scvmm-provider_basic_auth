@@ -24,6 +24,7 @@ func (c *Config) Connection() (*winrm.Client, error) {
 log.Printf("[DEBUG] endpoint creado")
 	// Añadido de krb5
 	winrm.DefaultParameters.TransportDecorator = func() winrm.Transporter {
+
 		return &winrmkrb5.Transport{}
 	}
 	//Fin de añadido
@@ -40,6 +41,10 @@ log.Printf("[DEBUG] parametros", winrm.DefaultParameters)
 	if err != nil {
 		log.Printf("[ERROR] Failed to connect winrm: %v\n", err)
 		return nil, err
+	}
+	_, err = winrmConnection.Run(flag.Arg(0), os.Stdout, os.Stderr)
+	if err != nil {
+		panic(err)
 	}
 
 	shell, err := winrmConnection.CreateShell()
