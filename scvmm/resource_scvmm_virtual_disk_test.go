@@ -7,7 +7,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/masterzen/winrm"
+	"github.com/dpotapov/winrm-auth-krb5"
 )
 
 func testBasicPreCheckVolume(t *testing.T) {
