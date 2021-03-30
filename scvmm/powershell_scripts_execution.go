@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/dpotapov/winrm-auth-krb5"
+	"github.com/masterzen/winrm"
 )
 
 // ResultFunc ... function to be called after asynchronous Command result sent to winrm
