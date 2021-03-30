@@ -30,7 +30,12 @@ log.Printf("[DEBUG] endpoint creado")
 	//Lo que habia: winrmConnection, err := winrm.NewClient(endpoint, c.Username, c.Password)
 	//Añado linea
 	winrmConnection, err := winrm.NewClientWithParameters(endpoint, c.Username, c.Password, winrm.DefaultParameters)
-log.Printf("[DEBUG] despues de la linea añadida de krb5")
+log.Printf("[DEBUG] despues de la linea añadida de krb5", err)
+log.Printf("[DEBUG] endpoints", endpoint)
+log.Printf("[DEBUG] usuario", c.Username)
+log.Printf("[DEBUG] password", c.Password)
+log.Printf("[DEBUG] parametros", winrm.DefaultParameters)
+	
 	//fin añadido
 	if err != nil {
 		log.Printf("[ERROR] Failed to connect winrm: %v\n", err)
