@@ -5,7 +5,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/masterzen/winrm"
+	"github.com/dpotapov/winrm-auth-krb5"
 )
 
 // Config ... SCVMM configuration details
