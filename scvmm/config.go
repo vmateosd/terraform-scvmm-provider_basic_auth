@@ -21,7 +21,15 @@ type Config struct {
 func (c *Config) Connection() (*winrm.Client, error) {
 
 	endpoint := winrm.NewEndpoint(c.ServerIP, c.Port, false, false, nil, nil, nil, 0)
-	winrmConnection, err := winrm.NewClient(endpoint, c.Username, c.Password)
+	// Añadido de krb5
+	winrm.DefaultParameters.TransportDecorator = func() winrm.Transporter {
+		return &winrmkrb5.Transport{}
+	}
+	//Fin de añadido
+	//Lo que habia: winrmConnection, err := winrm.NewClient(endpoint, c.Username, c.Password)
+	//Añado linea
+	winrmConnection, err := winrm.NewClientWithParameters(endpoint, "", "", winrm.DefaultParameters)
+	//fin añadido
 	if err != nil {
 		log.Printf("[ERROR] Failed to connect winrm: %v\n", err)
 		return nil, err
