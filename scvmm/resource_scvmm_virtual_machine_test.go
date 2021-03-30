@@ -8,6 +8,7 @@ import (
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/terraform"
 	"github.com/dpotapov/winrm-auth-krb5"
+	"github.com/masterzen/winrm"
 )
 
 func testBasicPreCheckVirtualMachine(t *testing.T) {
