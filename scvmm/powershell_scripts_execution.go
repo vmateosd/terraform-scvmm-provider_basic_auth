@@ -11,7 +11,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/dpotapov/winrm-auth-krb5"
 	"github.com/masterzen/winrm"
 )
 
