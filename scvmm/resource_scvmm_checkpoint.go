@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/masterzen/winrm"
+	"github.com/dpotapov/winrm-auth-krb5"
 )
 
 func resourceSCVMMCheckpoint() *schema.Resource {
