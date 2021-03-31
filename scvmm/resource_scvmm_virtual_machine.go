@@ -1,4 +1,4 @@
-ackage scvmm
+package scvmm
 
 import (
 	"fmt"
