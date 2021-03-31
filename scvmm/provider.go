@@ -35,6 +35,18 @@ func Provider() terraform.ResourceProvider {
 				Description: "Password for provided user_name",
 				DefaultFunc: schema.EnvDefaultFunc("SCVMM_SERVER_PASSWORD", nil),
 			},
+			"dom_user_name": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Domain User name",
+				DefaultFunc: schema.EnvDefaultFunc("DOM_SCVMM_SERVER_USER", nil),
+			},
+			"dom_user_password": {
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Domain Password for provided user_name",
+				DefaultFunc: schema.EnvDefaultFunc("DOM_SCVMM_SERVER_PASSWORD", nil),
+			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"scvmm_virtual_machine": resourceSCVMMVirtualMachine(),
