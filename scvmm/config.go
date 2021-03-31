@@ -5,7 +5,6 @@ import (
 	"log"
 	"strings"
 
-	"github.com/dpotapov/winrm-auth-krb5"
 	"github.com/masterzen/winrm"
 )
 
@@ -21,30 +20,10 @@ type Config struct {
 func (c *Config) Connection() (*winrm.Client, error) {
 
 	endpoint := winrm.NewEndpoint(c.ServerIP, c.Port, false, false, nil, nil, nil, 0)
-log.Printf("[DEBUG] endpoint creado")
-	// Añadido de krb5
-	winrm.DefaultParameters.TransportDecorator = func() winrm.Transporter {
-
-		return &winrmkrb5.Transport{}
-	}
-	//Fin de añadido
-	//Lo que habia: winrmConnection, err := winrm.NewClient(endpoint, c.Username, c.Password)
-	//Añado linea
-	winrmConnection, err := winrm.NewClientWithParameters(endpoint, c.Username, c.Password, winrm.DefaultParameters)
-log.Printf("[DEBUG] despues de la linea añadida de krb5", err)
-log.Printf("[DEBUG] endpoints", endpoint)
-log.Printf("[DEBUG] usuario", c.Username)
-log.Printf("[DEBUG] password", c.Password)
-log.Printf("[DEBUG] parametros", winrm.DefaultParameters)
-	
-	//fin añadido
+	winrmConnection, err := winrm.NewClient(endpoint, c.Username, c.Password)
 	if err != nil {
 		log.Printf("[ERROR] Failed to connect winrm: %v\n", err)
 		return nil, err
-	}
-	_, err = winrmConnection.Run(flag.Arg(0), os.Stdout, os.Stderr)
-	if err != nil {
-		panic(err)
 	}
 
 	shell, err := winrmConnection.CreateShell()
