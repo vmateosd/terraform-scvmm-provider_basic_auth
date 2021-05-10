@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/plugin"
-	"github.com/vmateosd/terraform-provider-scvmm/scvmm"
+	"github.com/vmateosd/terraform-provider-scvmm_basic_auth/scvmm"
 )
 
 func main() {

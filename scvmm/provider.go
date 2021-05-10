@@ -35,7 +35,6 @@ func Provider() terraform.ResourceProvider {
 				Description: "Password for provided user_name",
 				DefaultFunc: schema.EnvDefaultFunc("SCVMM_SERVER_PASSWORD", nil),
 			},
-			
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"scvmm_virtual_machine": resourceSCVMMVirtualMachine(),
